@@ -12,10 +12,13 @@
   "version": "0.1.0",
   "main": "index.ts",
   "scripts": {
-    "deploy": "forge deploy",
-    "install": "forge deploy && forge install",
-    "reinstall": "forge deploy && forge install --upgrade",
-    "tunnel": "forge tunnel",
+    "forge:d": "forge deploy",
+    "forge:i": "forge install",
+    "forge:ri": "forge install --upgrade",
+    "forge:di": "forge deploy && forge install",
+    "forge:dri": "forge deploy && forge install --upgrade",
+    "forge:t": "forge tunnel",
+    "forge:l": "forge login",
     "lint": "tsc --noEmit && eslint src/**/*",
     "pretty": "prettier src/**/* --write"
   },
@@ -23,12 +26,12 @@
     "@forge/bridge": "5.1.0",
     "@forge/react": "11.2.4",
     "@forge/resolver": "1.6.13",
-    "prettier-plugin-organize-imports": "^4.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router": "^7.6.3"
   },
   "devDependencies": {
+    "@forge/cli": "^12.0.0",
     "@types/node": "^24.0.8",
     "@types/react": "^18.3.23",
     "@types/react-dom": "^18.3.7",
@@ -43,6 +46,7 @@
     "eslint-plugin-unused-imports": "^4.1.4",
     "globals": "^16.3.0",
     "prettier": "^3.6.2",
+    "prettier-plugin-organize-imports": "^4.1.0",
     "typescript": "^5.8.3"
   }
 }
