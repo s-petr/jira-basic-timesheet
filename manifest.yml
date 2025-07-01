@@ -1,0 +1,33 @@
+modules:
+  jira:globalPage:
+    - key: basic-timesheet
+      resource: main
+      resolver:
+        function: resolver
+      render: native
+      title: Basic Timesheet
+      pages:
+        - key: summary
+          title: Summary
+          route: summary
+        - key: timesheet
+          title: Timesheet
+          route: timesheet
+        - key: report
+          title: Report
+          route: report
+        - key: settings
+          title: Settings
+          route: settings
+  function:
+    - key: resolver
+      handler: index.handler
+resources:
+  - key: main
+    path: src/frontend/index.tsx
+app:
+  runtime:
+    name: nodejs22.x
+    memoryMB: 256
+    architecture: arm64
+  id: ari:cloud:ecosystem::app/396d57f6-5cbe-4b6c-8a4f-f23a9912805f
