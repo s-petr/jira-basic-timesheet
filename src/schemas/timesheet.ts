@@ -3,7 +3,7 @@ import { z } from 'zod/v4'
 const taskSchema = z.object({
   taskId: z.string(),
   name: z.string(),
-  comments: z.string(),
+  comment: z.string(),
   jiraIssue: z.string().optional(),
   categoryId: z.string(),
   duration: z.number(),
@@ -21,6 +21,7 @@ const timesheetSchema = z.object({
   date: z.string(),
   user: z.string(),
   workTime: z.number(),
+  comment: z.string(),
   tasks: z.array(taskSchema),
   categoryAllocations: z.array(categoryAllocationSchema)
 })

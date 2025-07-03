@@ -6,39 +6,21 @@ import {
   Heading,
   Inline,
   Label,
-  Range,
   Stack,
   Text,
   Textfield
 } from '@forge/react'
 import React, { useEffect, useState } from 'react'
 import { Timesheet, timesheetSchema } from '../../schemas/timesheet'
+import DurationPicker from '../components/duration-picker'
 import InlineEditText from '../components/inline-edit-text'
-
-function RangeWithText({ initialValue }: { initialValue: number }) {
-  const [value, setValue] = useState(initialValue)
-
-  return (
-    <Inline space='space.200'>
-      <Range
-        min={0}
-        max={100}
-        value={value}
-        onChange={(value) => setValue(value)}
-      />
-      <Textfield
-        min={0}
-        max={100}
-        value={value}
-        width={50}
-        onChange={(e) => setValue(e.target.value)}
-      />
-    </Inline>
-  )
-}
 
 export default function TimesheetPage() {
   const [timesheet, setTimesheet] = useState<Timesheet | null>(null)
+
+  const [categoryTime1, setCategoryTime1] = useState(30)
+  const [categoryTime2, setCategoryTime2] = useState(245)
+  const [categoryTime3, setCategoryTime3] = useState(99)
 
   useEffect(() => {
     invoke('getTimesheet').then((res) => {
@@ -130,7 +112,13 @@ export default function TimesheetPage() {
         },
         {
           key: 'allocation',
-          content: <RangeWithText initialValue={10} />
+          content: (
+            <DurationPicker
+              value={categoryTime1}
+              maxMins={timesheet?.workTime || 1440}
+              onChange={setCategoryTime1}
+            />
+          )
         }
       ]
     },
@@ -143,7 +131,13 @@ export default function TimesheetPage() {
         },
         {
           key: 'allocation',
-          content: <RangeWithText initialValue={40} />
+          content: (
+            <DurationPicker
+              value={categoryTime2}
+              maxMins={timesheet?.workTime || 1440}
+              onChange={setCategoryTime2}
+            />
+          )
         }
       ]
     },
@@ -156,7 +150,13 @@ export default function TimesheetPage() {
         },
         {
           key: 'allocation',
-          content: <RangeWithText initialValue={50} />
+          content: (
+            <DurationPicker
+              value={categoryTime3}
+              maxMins={timesheet?.workTime || 1440}
+              onChange={setCategoryTime3}
+            />
+          )
         }
       ]
     }

@@ -2,6 +2,8 @@
 
 Basic timesheet app for Jira. Made using Atlassian Forge UI Kit.
 
+This is a work in progress.
+
 ## Tech Stack
 
 - [React](https://react.dev/reference/react)
